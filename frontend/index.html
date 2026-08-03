@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prof. Rufus Adeyeye Oguntuase - 70th Birthday Celebration</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #150b1a;
+            --burgundy-rich: #3f102e;
+            --burgundy-glow: #5e1c45;
+            --gold: #d4af37;
+            --gold-light: #f3e5ab;
+            --cream: #faf7f2;
+            --charcoal: #1f1f1f;
+            --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--cream);
+            color: var(--charcoal);
+            text-align: center;
+            overflow-x: hidden;
+            letter-spacing: 0.03em;
+        }
+        h1, h2, h3, .scripture, .celebrant-subtitle {
+            font-family: 'Cinzel', serif;
+        }
+        .hidden {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+        .show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hero Split & Editorial Structure */
+        header {
+            background: linear-gradient(135deg, var(--bg-deep), var(--burgundy-rich));
+            color: #ffffff;
+            padding: 5rem 2rem;
+            border-bottom: 5px solid var(--gold);
+            position: relative;
+        }
+        .hero-wrapper {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            align-items: center;
+            gap: 4rem;
+            text-align: left;
+        }
+        .celebrant-photo-frame {
+            width: 300px;
+            height: 380px;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 4px solid var(--gold);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+            background: #ffffff;
+            position: relative;
+            margin: 0 auto;
+        }
+        .celebrant-photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .hero-content h2.tagline {
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin: 0 0 1rem 0;
+        }
+        .hero-content h1 {
+            font-size: 3.2rem;
+            margin: 0 0 0.8rem 0;
+            color: #ffffff;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+            line-height: 1.2;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.4);
+        }
+        .hero-content .celebrant-subtitle {
+            font-size: 1.25rem;
+            font-weight: 400;
+            letter-spacing: 0.15em;
+            color: var(--gold-light);
+            margin: 0 0 2rem 0;
+            text-transform: uppercase;
+        }
+        .hero-scripture {
+            font-style: italic;
+            font-size: 1rem;
+            color: var(--cream);
+            line-height: 1.7;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border-left: 3px solid var(--gold);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+        }
+
+        /* Floating Highlight Banner */
+        .highlight-banner {
+            background: linear-gradient(135deg, var(--burgundy-glow), var(--burgundy-rich));
+            color: var(--gold-light);
+            padding: 2.5rem 2rem;
+            border-radius: 20px;
+            margin: -3rem auto 3rem;
+            max-width: 1000px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            position: relative;
+            z-index: 10;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 2rem;
+            text-align: center;
+        }
+        .highlight-item h4 {
+            margin: 0 0 0.4rem 0;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            color: var(--gold);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .highlight-item p {
+            margin: 0;
+            font-size: 1.2rem;
+            font-family: 'Cinzel', serif;
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .section {
+            margin: 4.5rem 0;
+            padding: 4rem 3rem;
+            background: #ffffff;
+            border-radius: 28px;
+            box-shadow: 0 15px 40px rgba(63, 16, 46, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+        }
+        .section h2 {
+            font-size: 2.4rem;
+            color: var(--burgundy-rich);
+            margin-bottom: 1rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+        }
+        .section p {
+            color: #555555;
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+        }
+
+        /* Royal Interactive Envelope Showcase */
+        .invitation-showcase {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+            margin: 2rem auto;
+        }
+        .envelope-container {
+            position: relative;
+            width: 100%;
+            max-width: 480px;
+            height: 300px;
+            background: linear-gradient(135deg, var(--burgundy-rich), var(--bg-deep));
+            border-radius: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 25px 50px rgba(21, 11, 26, 0.25);
+            border: 2px solid var(--gold);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+        .envelope-container:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 60px rgba(63, 16, 46, 0.35);
+            border-color: #ffffff;
+        }
+        .envelope-content {
+            text-align: center;
+            color: #ffffff;
+            padding: 2.5rem;
+            z-index: 2;
+        }
+        .wax-seal {
+            width: 75px;
+            height: 75px;
+            background: var(--gold);
+            border-radius: 50%;
+            margin: 0 auto 1.4rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cinzel', serif;
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: var(--bg-deep);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+            border: 2px solid #ffffff;
+        }
+        .envelope-content h3 {
+            margin: 0 0 0.5rem 0;
+            font-size: 1.8rem;
+            color: var(--gold-light);
+            letter-spacing: 0.05em;
+        }
+        .envelope-content p {
+            margin: 0;
+            color: rgba(255,255,255,0.8);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+        }
+
+        /* Video Modal Popup */
+        #videoModal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(21, 11, 26, 0.95);
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 2rem;
+            box-sizing: border-box;
+        }
+        .video-modal-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 850px;
+            width: 100%;
+            position: relative;
+        }
+        #videoModal video {
+            width: 100%;
+            max-height: 75vh;
+            border-radius: 16px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+            border: 2px solid var(--gold);
+            background: #000;
+        }
+        .close-video {
+            position: absolute;
+            top: -60px;
+            right: 0;
+            color: #ffffff;
+            font-size: 3rem;
+            cursor: pointer;
+            font-family: 'Cinzel', serif;
+            transition: var(--transition);
+        }
+        .close-video:hover {
+            color: var(--gold);
+        }
+
+        .event-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2.5rem;
+            text-align: left;
+        }
+        .event-card {
+            background: var(--cream);
+            padding: 3rem;
+            border-radius: 20px;
+            border-top: 5px solid var(--gold);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.03);
+            transition: var(--transition);
+            border-left: 1px solid rgba(212, 175, 55, 0.2);
+            border-right: 1px solid rgba(212, 175, 55, 0.2);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        .event-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 35px rgba(63, 16, 46, 0.08);
+        }
+        .event-card h3 {
+            color: var(--burgundy-rich);
+            margin-top: 0;
+            font-size: 1.8rem;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.4);
+            padding-bottom: 1rem;
+            letter-spacing: 0.03em;
+        }
+        .event-card p {
+            color: #444444;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin: 1rem 0;
+        }
+        .map-container {
+            margin-top: 1.5rem;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #e0d5c1;
+        }
+
+        /* Attire Section */
+        .attire-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+        .attire-box {
+            background: var(--cream);
+            padding: 2.5rem 4rem;
+            border-radius: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.03);
+            text-align: center;
+        }
+        .attire-box h3 {
+            color: var(--burgundy-rich);
+            font-family: 'Cinzel', serif;
+            font-size: 1.6rem;
+            margin-top: 0;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.4);
+            padding-bottom: 0.8rem;
+            letter-spacing: 0.05em;
+        }
+        .attire-box p {
+            color: var(--burgundy-glow);
+            font-size: 1.35rem;
+            font-weight: 600;
+            margin: 1rem 0 0 0;
+            letter-spacing: 0.05em;
+        }
+
+        /* Enquiries Bottom Section */
+        .enquiries-card {
+            background: linear-gradient(135deg, var(--burgundy-rich), var(--bg-deep));
+            color: #ffffff;
+            padding: 4rem 3rem;
+            border-radius: 28px;
+            max-width: 900px;
+            margin: 5rem auto 0;
+            box-shadow: 0 25px 50px rgba(21, 11, 26, 0.2);
+            border: 2px solid var(--gold);
+            text-align: center;
+        }
+        .enquiries-card h2 {
+            color: var(--gold);
+            font-family: 'Cinzel', serif;
+            font-size: 2.6rem;
+            margin-top: 0;
+            margin-bottom: 1.2rem;
+            letter-spacing: 0.05em;
+        }
+        .enquiries-card p {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 1.1rem;
+            max-width: 650px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.8;
+        }
+        .enquiries-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+        .phone-badge {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 0.8rem 1.5rem;
+            border-radius: 10px;
+            border: 1px solid var(--gold);
+            color: var(--gold-light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            letter-spacing: 0.05em;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: var(--transition);
+        }
+        .phone-badge:hover {
+            background: var(--gold);
+            color: var(--bg-deep);
+            transform: translateY(-3px);
+        }
+
+        footer {
+            background-color: var(--bg-deep);
+            color: var(--gold-light);
+            padding: 3.5rem 2rem;
+            border-top: 4px solid var(--gold);
+            font-size: 1rem;
+            letter-spacing: 0.05em;
+            margin-top: 6rem;
+        }
+        footer .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        footer p {
+            margin: 0;
+            font-family: 'Cinzel', serif;
+            font-size: 1.4rem;
+            font-style: italic;
+            color: var(--cream);
+            letter-spacing: 0.03em;
+        }
+
+        @media (max-width: 900px) {
+            .hero-wrapper {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2.5rem;
+            }
+            .hero-scripture {
+                text-align: left;
+            }
+            .highlight-banner {
+                margin: 2rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="hero-wrapper">
+            <div class="celebrant-photo-frame hidden">
+                <img src="images/celebrant.jpg" alt="Prof. Rufus Adeyeye Oguntuase">
+            </div>
+            <div class="hero-content">
+                <h2 class="tagline hidden">70 Years of Grace & Impact</h2>
+                <h1 class="hidden">Prof. Rufus Adeyeye Oguntuase, JP</h1>
+                <div class="celebrant-subtitle hidden">A Life of Leadership, Service & Faith</div>
+                <div class="hero-scripture hidden">
+                    "Great is Thy faithfulness, O God my Father; there is no shadow of turning with Thee."<br>
+                    <span style="font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); display: block; margin-top: 0.5rem;">&mdash; Lamentations 3:22–23</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Floating Highlight Banner -->
+    <div class="container" style="padding-top: 0; padding-bottom: 0;">
+        <div class="highlight-banner hidden">
+            <div class="highlight-item">
+                <h4>Celebration Date</h4>
+                <p>Sunday, 27th Sept, 2026</p>
+            </div>
+            <div class="highlight-item">
+                <h4>Thanksgiving Time</h4>
+                <p>10:00 AM Prompt</p>
+            </div>
+            <div class="highlight-item">
+                <h4>Location</h4>
+                <p>Ikorodu, Lagos State</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Digital Invitation Interactive Envelope Section -->
+        <div class="section hidden">
+            <h2>Digital Invitation</h2>
+            <p>Please regard this as your personal invitation. Join us as we give thanks to God for a remarkable 70 years of His grace, mercy, and faithfulness. Tap the envelope below to open your invitation.</p>
+            <div class="invitation-showcase">
+                <div class="envelope-container" onclick="openVideoModal()">
+                    <div class="envelope-content">
+                        <div class="wax-seal">RAO</div>
+                        <h3>70th Birthday Celebration</h3>
+                        <p>Open Invitation</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Event Details Section with Google Maps -->
+        <div class="section hidden">
+            <h2>The Schedule</h2>
+            <p>We are deeply honored to have you celebrate this momentous milestone with us.</p>
+            <div class="event-grid">
+                <div class="event-card">
+                    <h3>Thanksgiving Service</h3>
+                    <p><strong>Date:</strong> Sunday, 27th September, 2026</p>
+                    <p><strong>Time:</strong> 10:00 AM</p>
+                    <p><strong>Venue:</strong> Comforter Gospel Assembly Cathedral, 17/23, Adekunle Bombata Street, Off Etunrenren, Benson Bus Stop, Lowa, Ikorodu, Lagos.</p>
+                    <div class="map-container">
+                        <iframe width="100%" height="220" style="border:0;" loading="lazy" allowfullscreen src="https://maps.google.com/maps?q=Comforter+Gospel+Assembly+Cathedral+Ikorodu+Lagos&t=&z=15&ie=UTF8&iwloc=&output=embed"></iframe>
+                    </div>
+                </div>
+                <div class="event-card">
+                    <h3>Reception</h3>
+                    <p><strong>Date:</strong> Sunday, 27th September, 2026</p>
+                    <p><strong>Time:</strong> Immediately following service</p>
+                    <p><strong>Venue:</strong> ILE EYE HALL, 27, Mabadeje Street, Lowa, Ikorodu, Lagos.</p>
+                    <div class="map-container">
+                        <iframe width="100%" height="220" style="border:0;" loading="lazy" allowfullscreen src="https://maps.google.com/maps?q=Mabadeje+Street+Lowa+Ikorodu+Lagos&t=&z=15&ie=UTF8&iwloc=&output=embed"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Attire Section -->
+        <div class="section hidden">
+            <h2>Attire</h2>
+            <p>To add to the beauty, elegance, and harmony of this celebration, our guest color code is:</p>
+            <div class="attire-container">
+                <div class="attire-box">
+                    <h3>Color Code</h3>
+                    <p>White & Burgundy</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- For Enquiries Section Placed Safely at the Very End -->
+        <div class="enquiries-card hidden">
+            <h2>For Enquiries</h2>
+            <p>Should you require any further information or assistance regarding the celebration, please feel free to reach out to our designated contacts:</p>
+            <div class="enquiries-list">
+                <a href="tel:08135241735" class="phone-badge">Bola: 0813 524 1735</a>
+                <a href="tel:08162492165" class="phone-badge">Sola: 0816 249 2165</a>
+                <a href="tel:08136500395" class="phone-badge">John: 0813 650 0395</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>"Come & Celebrate With Us — Thank you for being part of this milestone."</p>
+        </div>
+    </footer>
+
+    <!-- Video Modal Popup -->
+    <div id="videoModal" onclick="closeVideoModal()">
+        <div class="video-modal-content" onclick="event.stopPropagation()">
+            <span class="close-video" onclick="closeVideoModal()">&times;</span>
+            <video id="inviteVideo" preload="auto" playsinline>
+                <source src="images/birthday-invite.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.hidden').forEach((el) => observer.observe(el));
+
+        let videoTimer = null;
+
+        function openVideoModal() {
+            const modal = document.getElementById('videoModal');
+            const video = document.getElementById('inviteVideo');
+            modal.style.display = 'flex';
+            video.currentTime = 0;
+            video.play();
+
+            videoTimer = setTimeout(() => {
+                closeVideoModal();
+            }, 120000);
+        }
+
+        function closeVideoModal() {
+            const modal = document.getElementById('videoModal');
+            const video = document.getElementById('inviteVideo');
+            video.pause();
+            modal.style.display = 'none';
+            if (videoTimer) {
+                clearTimeout(videoTimer);
+                videoTimer = null;
+            }
+        }
+    </script>
+</body>
+</html>
