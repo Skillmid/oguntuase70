@@ -285,10 +285,13 @@
 
         .event-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.5rem;
+            grid-template-columns: 1fr;
+            gap: 2rem;
             margin-top: 2.5rem;
             text-align: left;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
         .event-card {
             background: var(--cream);
@@ -551,7 +554,7 @@
     <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <p>"Come & Celebrate With Us — Thank you for being part of this milestone."</p>
+            <p>"Come & Celebrate With Us &mdash; Thank you for being part of this milestone."</p>
         </div>
     </footer>
 
